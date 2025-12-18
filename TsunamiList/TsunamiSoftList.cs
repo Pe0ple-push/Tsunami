@@ -12,15 +12,15 @@ namespace TsunamiApp
         private List<string> _officeApplications = new List<string>();
         private List<string> _security = new List<string>();
 
-        public void AddSoftware(string name, string downloadUrl)
+        public void AddOperationSystem(string name, string downloadUrl)
         {
 
         }
-        public void RemoveSoftware(string name, string downloadUrl)
+        public void RemoveOperationSystem(string name, string downloadUrl)
         {
 
         }
-        public IReadOnlyList<string> GetSoftwareList()
+        public IReadOnlyList<string> GetOperationSystemList()
         {
             return _operationSystem.AsReadOnly();
         }

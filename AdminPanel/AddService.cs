@@ -23,9 +23,11 @@ namespace TsunamiApp
                     Console.WriteLine("Введите ссылку скачивания:\t");
                     string? downloadUrl = Console.ReadLine();
 
-                    addService.AddSoftware(nameSoft, downloadUrl);
+                    addService.AddOperationSystem(nameSoft, downloadUrl);
                     Console.WriteLine("Софт успешно добавлен!");
                     break;
+
+                //case 2:
             }
         }
     }

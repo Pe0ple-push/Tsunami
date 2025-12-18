@@ -36,6 +36,5 @@ namespace TsunamiApp
             {
                 return _listTsunam.AsReadOnly();
             }
-
     }
 }

@@ -5,18 +5,26 @@ namespace TsunamiApp
         private List<string> _listTsunamMenu = new List<string>();
         public void MenuList()
         {
-            _listTsunamMenu.Add("[1] Operating system");
-            _listTsunamMenu.Add("[2] Design and Graphics");
-            _listTsunamMenu.Add("[3] Video and Audio");
-            _listTsunamMenu.Add("[4] Development");
-            _listTsunamMenu.Add("[5] Utilities");
-            _listTsunamMenu.Add("[6] Browsers");
-            _listTsunamMenu.Add("[7] Entertainments");
-            _listTsunamMenu.Add("[8] Office Applications");
-            _listTsunamMenu.Add("[9] Security");
+            _listTsunamMenu.Add("Operating system");
+            _listTsunamMenu.Add("Design and Graphics");
+            _listTsunamMenu.Add("Video and Audio");
+            _listTsunamMenu.Add("Development");
+            _listTsunamMenu.Add("Utilities");
+            _listTsunamMenu.Add("Browsers");
+            _listTsunamMenu.Add("Entertainments");
+            _listTsunamMenu.Add("Office Applications");
+            _listTsunamMenu.Add("Security");
         }
         public void AddSoftCategory(string softCategory)
         {
+            if(softCategory.Length < 2)
+            {
+                throw new ArgumentException("Error: слишком короткое имя категории");
+            }
+            if (softCategory.Length > 25)
+            {
+                throw new ArgumentException("Error: слишком длинное имя категории");
+            }
             if (string.IsNullOrWhiteSpace(softCategory))
             {
                 throw new ArgumentException("Error: новая категория не может быть пуста!");
@@ -26,6 +34,7 @@ namespace TsunamiApp
                 throw new ArgumentException("Error: софт уже существует!");
             }
             _listTsunamMenu.Add(softCategory);
+
         }
         public void RemoveSoftCategory(string softCategory)
         {

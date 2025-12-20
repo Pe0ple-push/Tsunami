@@ -1,5 +1,3 @@
-using System.Windows.Controls.Primitives;
-
 namespace TsunamiApp
 {
     public class AddService
@@ -24,10 +22,7 @@ namespace TsunamiApp
                         Console.Write("\nВведите команду для нового сервиса:\t");
                             var adminInputServiceName = Console.ReadLine();
 
-                        Console.Write("\nВведите ссылку для скачивания:\t");
-                            var adminInputUrl = Console.ReadLine();
-
-                        addService.AddOperationSystem(adminInputServiceName, adminInputUrl);
+                        addService.AddOperationSystem(adminInputServiceName);
                         Console.WriteLine($"Сервис {adminInputServiceName} успешно добавлен!");
                     break;
 

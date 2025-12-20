@@ -20,10 +20,7 @@ namespace TsunamiApp
                         Console.Write("\nВведите имя сервиса для удаления:\t");
                         var adminNameRemove = Console.ReadLine();
 
-                        Console.Write("\nВведите ссылку для удаления:\t");
-                        var adminUrlRemove = Console.ReadLine();
-
-                        removeService.RemoveOperationSystem(adminNameRemove , adminUrlRemove);
+                        removeService.RemoveOperationSystem(adminNameRemove);
                         Console.WriteLine($"Сервис {adminNameRemove} удалён!");
                         break;
 

@@ -1,3 +1,5 @@
+using System.CodeDom;
+
 namespace TsunamiApp
 {
     public class TsunamiList
@@ -14,31 +16,26 @@ namespace TsunamiApp
 
         //создание списка сервисов по умолчанию => тестирование ПО
 
-        public void AddOperationSystem(string name, string downloadUrl)
+        public void AddOperationSystem(string name)
         {
-            if(string.IsNullOrWhiteSpace(name) && string.IsNullOrWhiteSpace(downloadUrl))
-                throw new ArgumentException("Error: ссылка или название сервиса пусты!");
+            if(string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Error: название сервиса пустует!");
 
             if(_operationSystem.Contains(name))
                 throw new ArgumentException("Error: сервис уже существует!" , nameof(name));
 
-            if (!downloadUrl.Contains("https://") || !downloadUrl.Contains("http://"))
-                throw new ArgumentException("Error: неверный формат ссылки!", nameof(downloadUrl));
-
-            if(!downloadUrl.Contains('.')) 
-                throw new ArgumentException("Error: неверный формат домена в ссылке!" , nameof(downloadUrl));
-
-            _operationSystem.AddRange(name, downloadUrl);
+            _operationSystem.Add(name);
         }
-        public void RemoveOperationSystem(string name , string downloadUrl)
+        public void RemoveOperationSystem(string name)
         {
-            if (!_operationSystem.Contains(name)) throw new ArgumentException("Error: сервис для удаления не найден!", nameof(name));
-            if (!downloadUrl.Contains("https://") && downloadUrl.Contains("http://"))
-            throw new ArgumentException("Error: неверный форма ссылки для удаления", nameof(downloadUrl));
-
-                var indexRemove = _operationSystem.IndexOf(downloadUrl);
-                _operationSystem.RemoveAt(indexRemove);
-
+          if(!_operationSystem.Contains(name))
+            {
+                throw new ArgumentException("Error: такого сервиса не существует...", nameof(name));
+            }
+          if(string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Error: введите имя сервиса для удаления...", nameof(name));
+            }
             _operationSystem.Remove(name);
         }
         public IReadOnlyList<string> GetOperationSystemList()

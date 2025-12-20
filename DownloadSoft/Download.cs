@@ -8,11 +8,8 @@ namespace TsunamiApp
 {
     public class Download
     {
-        private static async Task DowloadSoft(string name, string downloadUrl)
+        private static async Task DowloadSoftExe(string name, string downloadUrl)
         {
-
-        //try
-        //{
             if(string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException("Error: имя софта не может пустовать!" , nameof(name));
             if (string.IsNullOrWhiteSpace(downloadUrl)) throw new ArgumentException("Error: ссылка скачивания пуста!", nameof(downloadUrl));
             if (!downloadUrl.Contains("https://") && !downloadUrl.Contains("http://")) 
@@ -20,9 +17,7 @@ namespace TsunamiApp
                 throw new ArgumentException("Error: неверный формат ссылки!" , nameof(downloadUrl));
             }
 
-            //long fileSize = await GetFileSizeAsync(downloadUrl);
-
-            var savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name + ".zip");
+            var savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name + ".exe");
             Console.WriteLine($"Скачиваем {name}...");
 
                 using var client = new HttpClient();
@@ -30,29 +25,43 @@ namespace TsunamiApp
                         await File.WriteAllBytesAsync(savePath, data);
 
             Console.WriteLine($"Установлено в {savePath}");
-
-        //}//try
-            //catch()
-            //{
-
-            //}
-
-
         }
         public static async Task RunDownloadSoft(string softName, string urlSoft)
         {
             try
             {
-                await DowloadSoft(softName, urlSoft);
+                await DowloadSoftExe(softName, urlSoft);
             }
             catch(ArgumentException ex)
             {
                 Console.WriteLine(ex.Message);
             }
-            //catch(HttpRequestException ex)
-            //{
-            //    Console.WriteLine(ex.Message); 
-            //}
         }
+    }
+    public class DownloadZip : Download
+    {
+        private static async Task DownloadSoftZip(string name, string downloadUrl)
+        {
+            //ZIP
+        }
+        public void RunDownloadSoftZip(string softName , string urlSoft)
+        {
+
+        }
+    }
+    public class DownloadTorrent : Download
+    {
+        private static async Task DownloadSoftTorrent(string name , string downloadUrl)
+        {
+            //TORRENT
+        }
+        public void RunDownloadSoftTorrent(string softName , string urlSoft)
+        {
+
+        }
+    }
+    public class DownloadIso : Download
+    {
+        //Async Task Iso
     }
 }

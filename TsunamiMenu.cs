@@ -2,18 +2,20 @@ namespace TsunamiApp
 {
     public class TsunamiMenu
     {
-        private List<string> _listTsunamMenu = new List<string>();
+        private List<string> _listTsunamMenu = new List<string>();//no work!!!
         public void MenuList()
         {
             _listTsunamMenu.Add("--open --category --OperationSystem");
-            _listTsunamMenu.Add("Design and Graphics");
-            _listTsunamMenu.Add("Video and Audio");
-            _listTsunamMenu.Add("Development");
-            _listTsunamMenu.Add("Utilities");
-            _listTsunamMenu.Add("Browsers");
-            _listTsunamMenu.Add("Entertainments");
-            _listTsunamMenu.Add("Office Applications");
-            _listTsunamMenu.Add("Security");
+            _listTsunamMenu.Add("--open --category --Design&Graphics");
+            _listTsunamMenu.Add("--open --category --Video&Audio");
+            _listTsunamMenu.Add("--open --category --Development");
+            _listTsunamMenu.Add("--open --category --Utilities");
+            _listTsunamMenu.Add("--open --category --Browsers");
+            _listTsunamMenu.Add("--open --category --Entertainments");
+            _listTsunamMenu.Add("--open --category --OfficeApplications");
+            _listTsunamMenu.Add("--open --category --Security");
+
+            foreach(string menu in _listTsunamMenu) Console.WriteLine(menu);
         }
         private void AddSoftwareFirst(string softCategory)
         {
@@ -31,7 +33,7 @@ namespace TsunamiApp
             AddSoftwareFirst(softCategory);
         }
 
-        public void AddSoftCategory(string softCategory)
+        private void AddSoftCategory(string softCategory)
         {
             if(softCategory.Length < 2)
             {
@@ -52,7 +54,12 @@ namespace TsunamiApp
             _listTsunamMenu.Add(softCategory);
 
         }
-        public void RemoveSoftCategory(string softCategory)
+        public void RunAddSoftCategory(string softCategory)
+        {
+            AddSoftCategory(softCategory);
+        }
+
+        private void RemoveSoftCategory(string softCategory)
         {
             if (string.IsNullOrWhiteSpace(softCategory))
             {
@@ -64,17 +71,23 @@ namespace TsunamiApp
             }
             _listTsunamMenu.Remove(softCategory);
         }
+        public void RunRemoveSoftCategory(string softCategory)
+        {
+            RemoveSoftCategory(softCategory);
+        }
         public IReadOnlyList<string> GetSoftCategory()
         {
             return _listTsunamMenu.AsReadOnly();
         }
         public static void Menu()
         {
-            TsunamiMenu menu = new TsunamiMenu();
-                var menuMain = menu.GetSoftCategory();
-                    foreach (var item in menuMain) Console.WriteLine(item);
             do
             {
+                Console.Clear();
+                TsunamiMenu menu = new TsunamiMenu();
+                var menuMain = menu.GetSoftCategory();
+                //list
+
                 Console.WriteLine("\n=>:\t");
                 var userInput = Console.ReadLine();
 

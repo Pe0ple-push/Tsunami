@@ -2,7 +2,7 @@ namespace TsunamiApp
 {
     public class TsunamiMain
     {
-        public async Task Run()
+        public static async Task Main()
         {
             TsunamiMenu.Menu();            
         }

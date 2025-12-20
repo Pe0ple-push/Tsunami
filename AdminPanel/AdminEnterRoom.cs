@@ -4,7 +4,7 @@ namespace TsunamiApp
 {
     public class SecretRoom
     {
-        public async Task AdminKey()
+        public async Task AdminSecretCommand()
         {
             
         }

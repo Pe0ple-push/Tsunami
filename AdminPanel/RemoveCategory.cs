@@ -11,7 +11,7 @@ namespace TsunamiApp
                 Console.Write("Введите команду категории:\t");
 
                 var adminRemove = Console.ReadLine();
-                removeCategory.RemoveSoftCategory(adminRemove);
+                removeCategory.RunRemoveSoftCategory(adminRemove);
 
                     Console.Clear();
                     Console.WriteLine($"Категория {adminRemove} удалена!");

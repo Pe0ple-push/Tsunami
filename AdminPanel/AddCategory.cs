@@ -10,7 +10,7 @@ namespace TsunamiApp
                 Console.Write("Введите команду для новой категории:\t");
 
                 string? adminInput = Console.ReadLine();
-                adminAddCategory.AddSoftCategory(adminInput);
+                adminAddCategory.RunAddSoftCategory(adminInput);
 
                 Console.Clear();
                 Console.WriteLine($"Категория: {adminInput} добавлена!");

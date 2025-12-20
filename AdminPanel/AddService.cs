@@ -6,28 +6,44 @@ namespace TsunamiApp
     {
         public static void Add()
         {
-            Console.Clear();
-            TsunamiList addService = new TsunamiList();
 
-            TsunamiMenu.Menu();
-            Console.WriteLine();
-
-            Console.WriteLine("Ваш выбор:\t");
-             int adminInput = Convert.ToInt32(Console.ReadLine());
-
-            switch(adminInput)
+            try
             {
-                case 1:
-                    Console.WriteLine("Введите имя софта:\t");
-                    string? nameSoft = Console.ReadLine();
-                    Console.WriteLine("Введите ссылку скачивания:\t");
-                    string? downloadUrl = Console.ReadLine();
+                Console.Clear();
+                TsunamiList addService = new TsunamiList();
+                TsunamiMenu addEnter = new TsunamiMenu();
 
-                    addService.AddOperationSystem(nameSoft, downloadUrl);
-                    Console.WriteLine("Софт успешно добавлен!");
+                    Console.Write("\nВведите команду открытия категории:\t");
+                    var adminInput = Console.ReadLine();
+
+                addEnter.AddSoftware(adminInput); //проверка на сущ категории для добавления сервиса
+                
+                switch(adminInput)
+                {
+                    case "--admin --category --OperationSystem":
+                        Console.Write("\nВведите команду для нового сервиса:\t");
+                            var adminInputServiceName = Console.ReadLine();
+
+                        Console.Write("\nВведите ссылку для скачивания:\t");
+                            var adminInputUrl = Console.ReadLine();
+
+                        addService.AddOperationSystem(adminInputServiceName, adminInputUrl);
+                        Console.WriteLine($"Сервис {adminInputServiceName} успешно добавлен!");
                     break;
 
-                //case 2:
+                    case "Design and Graphics": break;
+                    case "Video and Audio": break;
+                    case "Development": break;
+                    case "Utilities": break;
+                    case "Browsers": break;
+                    case "Entertainments": break;
+                    case "Office Applications": break;
+                    case "Security": break;
+                }
+            }
+            catch(ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }

@@ -1,27 +1,36 @@
+using System.Reflection.Metadata.Ecma335;
+
 namespace TsunamiApp
 {
     public class AdminPanel
     {
         public static void Panel()
         {
-            Console.Clear();
-            Console.WriteLine(" [1] tsunami --newService");
-            Console.WriteLine(" [2] tsunami --removeService");
-            Console.WriteLine(" [3] tsunami --newCategory");
-            Console.WriteLine(" [4] tsunami --removeCategory");
-            int adminInput = Convert.ToInt32(Console.ReadLine());
-
-            switch(adminInput)
+            while(true)
             {
-                case 1: AddService.Add(); break;
-                case 2: RemoveService.Remove(); break;
-                case 3: AddCategory.Add(); break;
-                case 4: RemoveCategory.Remove(); break;
+                Console.Clear();
+                //banner
+                Console.WriteLine(" --admin --newService");
+                Console.WriteLine(" --admin --removeService");
+                Console.WriteLine(" --admin --newCategory");
+                Console.WriteLine(" --admin --removeCategory\n");
 
-                default:
-                throw new ArgumentException("Error: такой команды не существует!");
-            }//switch end
+                    Console.Write("=>:\t");
+                    var adminInput = Console.ReadLine();
 
+                switch(adminInput)
+                {
+                    case "--admin --newService": AddService.Add(); break;
+                    case "--admin --removeService": RemoveService.Remove(); break;
+                    case "--admin --newCategory": AddCategory.Add(); break;
+                    case "--admin --removeCategory": RemoveCategory.Remove(); break;
+
+                        default:
+                        //admin non error
+                        continue;
+                }//switch end
+                break;
+            }
         }//Panel end
     }
 }

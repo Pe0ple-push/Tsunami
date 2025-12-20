@@ -9,8 +9,10 @@ namespace TsunamiApp
     public class Download
     {
         private static async Task DowloadSoft(string name, string downloadUrl)
-        { 
+        {
 
+        //try
+        //{
             if(string.IsNullOrWhiteSpace(name)) throw new ArgumentNullException("Error: имя софта не может пустовать!" , nameof(name));
             if (string.IsNullOrWhiteSpace(downloadUrl)) throw new ArgumentException("Error: ссылка скачивания пуста!", nameof(downloadUrl));
             if (!downloadUrl.Contains("https://") && !downloadUrl.Contains("http://")) 
@@ -18,7 +20,7 @@ namespace TsunamiApp
                 throw new ArgumentException("Error: неверный формат ссылки!" , nameof(downloadUrl));
             }
 
-                //long fileSize = await GetFileSizeAsync(downloadUrl);
+            //long fileSize = await GetFileSizeAsync(downloadUrl);
 
             var savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name + ".zip");
             Console.WriteLine($"Скачиваем {name}...");
@@ -28,6 +30,13 @@ namespace TsunamiApp
                         await File.WriteAllBytesAsync(savePath, data);
 
             Console.WriteLine($"Установлено в {savePath}");
+
+        //}//try
+            //catch()
+            //{
+
+            //}
+
 
         }
         public static async Task RunDownloadSoft(string softName, string urlSoft)

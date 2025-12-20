@@ -7,15 +7,17 @@ namespace TsunamiApp
             try
             {
                 TsunamiMenu adminAddCategory = new TsunamiMenu();
-                Console.Write("Введите новую категорию:\t");
+                Console.Write("Введите команду для новой категории:\t");
 
                 string? adminInput = Console.ReadLine();
                 adminAddCategory.AddSoftCategory(adminInput);
 
                 Console.Clear();
                 Console.WriteLine($"Категория: {adminInput} добавлена!");
+
+                //Отправить результат в БД
             }
-            catch(ArgumentException ex)
+            catch (ArgumentException ex)
             {
                 Console.WriteLine(ex.Message); 
             }

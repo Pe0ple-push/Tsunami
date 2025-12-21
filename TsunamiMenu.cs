@@ -15,7 +15,7 @@ namespace TsunamiApp
             _listTsunamMenu.Add("--open --category --OfficeApplications");
             _listTsunamMenu.Add("--open --category --Security");
 
-            foreach(string menu in _listTsunamMenu) Console.WriteLine(menu);
+            foreach(string menu in _listTsunamMenu) Console.WriteLine(menu);//попытка вывода
         }
         private void AddSoftwareFirst(string softCategory)
         {
@@ -79,7 +79,9 @@ namespace TsunamiApp
         {
             return _listTsunamMenu.AsReadOnly();
         }
-        public static void Menu()
+
+
+        public static void Menu() //USER && ADMIN INTERFACE
         {
             do
             {
@@ -103,6 +105,11 @@ namespace TsunamiApp
                 switch(userInput)
                 {
                     case "--open --category --OperationSystem": break;
+
+
+
+                    case "--admin --n82c8283tb7 --openRoom": SecretRoom.AdminSecretCommand(); break; 
+                    //enter admin room => admin authorization
 
                     default:
                         Console.WriteLine("Error: такой категории не сущетсвует..."); continue;

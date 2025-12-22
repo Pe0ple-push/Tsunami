@@ -12,7 +12,7 @@ namespace TsunamiApp
                 Console.Write("\nВведите категорию для удаления сервиса:\t");
                 var adminInput = Console.ReadLine();
 
-                removeEnter.AddSoftware(adminInput);
+                //removeEnter.RunAddSoftware(adminInput);
 
                 switch(adminInput)
                 {
@@ -20,7 +20,7 @@ namespace TsunamiApp
                         Console.Write("\nВведите имя сервиса для удаления:\t");
                         var adminNameRemove = Console.ReadLine();
 
-                        removeService.RemoveOperationSystem(adminNameRemove);
+                        //removeService.RemoveOperationSystem(adminNameRemove);
                         Console.WriteLine($"Сервис {adminNameRemove} удалён!");
                         break;
 

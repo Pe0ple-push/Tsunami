@@ -1,0 +1,103 @@
+        
+        //ADMIN PANEL NEW/REMOVE CATEGORY
+
+        //private void AddSoftwareFirst(string softCategory)
+        //{
+        //    if(!_listTsunamMenu.Contains(softCategory))
+        //    {
+        //        throw new ArgumentException("Error: невозможно добавить сервис в эту категорию!", nameof(softCategory));
+        //    }
+        //    if(string.IsNullOrWhiteSpace(softCategory))
+        //    {
+        //        throw new ArgumentException("Error: имя категории для добавления сервиса пустое!" , nameof(softCategory));
+        //    }
+        //}
+        //public void AddSoftware(string  softCategory)
+        //{
+        //    AddSoftwareFirst(softCategory);
+        //}
+
+        //private void AddSoftCategory(string softCategory)
+        //{
+        //    if(softCategory.Length < 2)
+        //    {
+        //        throw new ArgumentException("Error: слишком короткое имя категории");
+        //    }
+        //    if (softCategory.Length > 25)
+        //    {
+        //        throw new ArgumentException("Error: слишком длинное имя категории");
+        //    }
+        //    if (string.IsNullOrWhiteSpace(softCategory))
+        //    {
+        //        throw new ArgumentException("Error: новая категория не может быть пуста!");
+        //    }
+        //    if (_listTsunamMenu.Contains(softCategory))
+        //    {
+        //        throw new ArgumentException("Error: софт уже существует!");
+        //    }
+        //    _listTsunamMenu.Add(softCategory);
+
+        //}
+        //public void RunAddSoftCategory(string softCategory)
+        //{
+        //    AddSoftCategory(softCategory);
+        //}
+
+        //private void RemoveSoftCategory(string softCategory)
+        //{
+        //    if (string.IsNullOrWhiteSpace(softCategory))
+        //    {
+        //        throw new ArgumentException("Error: поле удаления категории пустует!");
+        //    }
+        //    if (!_listTsunamMenu.Contains(softCategory))
+        //    {
+        //        throw new ArgumentException("Error: категория для удаления - не найдена!");
+        //    }
+        //    _listTsunamMenu.Remove(softCategory);
+        //}
+        //public void RunRemoveSoftCategory(string softCategory)
+        //{
+        //    RemoveSoftCategory(softCategory);
+        //}
+        //public IReadOnlyList<string> GetSoftCategory()
+        //{
+        //    return _listTsunamMenu.AsReadOnly();
+        //}
+
+
+        ------------------------------------------------------------------------
+
+
+        //ADMIN PANEL NEW/REMOVE SOFTWARE
+
+        //ADMIN PANEL COMMAND
+        //public void AddOperationSystem(string name)
+        //{
+        //    if(string.IsNullOrWhiteSpace(name))
+        //        throw new ArgumentException("Error: название сервиса пустует!");
+
+        //    if(_operationSystem.Contains(name))
+        //        throw new ArgumentException("Error: сервис уже существует!" , nameof(name));
+
+        //    _operationSystem.Add(name);
+        //}
+        //public void RemoveOperationSystem(string name)
+        //{
+        //  if(!_operationSystem.Contains(name))
+        //    {
+        //        throw new ArgumentException("Error: такого сервиса не существует...", nameof(name));
+        //    }
+        //  if(string.IsNullOrWhiteSpace(name))
+        //    {
+        //        throw new ArgumentException("Error: введите имя сервиса для удаления...", nameof(name));
+        //    }
+        //    _operationSystem.Remove(name);
+        //}
+        //public IReadOnlyList<string> GetOperationSystemList()
+        //{
+        //    return _operationSystem.AsReadOnly();
+        //}
+
+        //NEW Soft
+
+        ------------------------------------------------------------------------

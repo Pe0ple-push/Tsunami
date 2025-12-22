@@ -2,46 +2,38 @@ using System.CodeDom;
 
 namespace TsunamiApp
 {
-    public class TsunamiList
+    internal class TsunamiList //СОЗДАТЬ ОТДЕЛЬНЫЕ МЕТОДЫ ДЛЯ КАЖДОГО ЛИСТА
     {
-        private List<string> _operationSystem = new List<string>();
-        private List<string> _designGraphics = new List<string>();
-        private List<string> _videoAudio = new List<string>();
-        private List<string> _development = new List<string>();
-        private List<string> _Utilities = new List<string>();
-        private List<string> _browsers = new List<string>();
-        private List<string> _entertainments = new List<string>();
-        private List<string> _officeApplications = new List<string>();
-        private List<string> _security = new List<string>();
+        private static List<string> _operationSystem = new List<string>();
+        private static List<string> _designGraphics = new List<string>();
+        private static List<string> _videoAudio = new List<string>();
+        private static List<string> _development = new List<string>();
+        private static List<string> _Utilities = new List<string>();
+        private static List<string> _browsers = new List<string>();
+        private static List<string> _entertainments = new List<string>();
+        private static List<string> _officeApplications = new List<string>();
+        private static List<string> _security = new List<string>();
 
-        //создание списка сервисов по умолчанию => тестирование ПО
-
-        public void AddOperationSystem(string name)
+            
+        static TsunamiList()
         {
-            if(string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Error: название сервиса пустует!");
-
-            if(_operationSystem.Contains(name))
-                throw new ArgumentException("Error: сервис уже существует!" , nameof(name));
-
-            _operationSystem.Add(name);
+            _operationSystem.Add("--open --software --KaliLinux");
         }
-        public void RemoveOperationSystem(string name)
+        public static void RunOperationSystem()
         {
-          if(!_operationSystem.Contains(name))
+            Console.Clear();
+            //banner
+
+                foreach (string item in _operationSystem) Console.WriteLine(item);
+            Console.WriteLine("\n=>:\t");
+
+            var userInputSoft = Console.ReadLine();
+            switch(userInputSoft)
             {
-                throw new ArgumentException("Error: такого сервиса не существует...", nameof(name));
+                case:   break;
+                default: Console.WriteLine("Error: такого софта не существует..."); break;
             }
-          if(string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Error: введите имя сервиса для удаления...", nameof(name));
-            }
-            _operationSystem.Remove(name);
-        }
-        public IReadOnlyList<string> GetOperationSystemList()
-        {
-            return _operationSystem.AsReadOnly();
-        }
 
+        }
     }
 }

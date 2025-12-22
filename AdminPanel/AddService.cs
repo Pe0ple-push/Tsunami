@@ -14,7 +14,7 @@ namespace TsunamiApp
                     Console.Write("\nВведите команду открытия категории:\t");
                     var adminInput = Console.ReadLine();
 
-                addEnter.AddSoftware(adminInput); //проверка на сущ категории для добавления сервиса
+                //addEnter.AddSoftware(adminInput); //проверка на сущ категории для добавления сервиса
                 
                 switch(adminInput)
                 {
@@ -22,7 +22,7 @@ namespace TsunamiApp
                         Console.Write("\nВведите команду для нового сервиса:\t");
                             var adminInputServiceName = Console.ReadLine();
 
-                        addService.AddOperationSystem(adminInputServiceName);
+                        //addService.AddOperationSystem(adminInputServiceName);
                         Console.WriteLine($"Сервис {adminInputServiceName} успешно добавлен!");
                     break;
 

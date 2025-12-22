@@ -2,38 +2,21 @@ namespace TsunamiApp
 {
     public class AdminPanel
     {
-        //private List<string> _adminCommand = new List<string>();
-        //public void AdminCommand()
-        //{
-        //    _adminCommand.Add(" --admin --newCommand --Panel");
-        //    _adminCommand.Add(" --admin --newService");
-        //    _adminCommand.Add(" --admin --removeService");
-        //    _adminCommand.Add(" --admin --newCategory");
-        //    _adminCommand.Add(" --admin --removeCategory");
-        //    _adminCommand.Add(" --admin --newCommand --Download");
-        //    _adminCommand.Add(" --admin --removeCommand --Download");
-        //}
-
-        //public void AddAdmineCommand(string command)
-        //{
-        //    if(string.IsNullOrWhiteSpace(command))
-        //    {
-        //        throw new ArgumentNullException("Error: нова€ команда не может пустовать..." , nameof(command));
-        //    }
-        //    if(command.Contains(" --admin") || command.Contains("--admin"))
-        //    {
-        //        throw new ArgumentException("Error: неверный формат новой команды..." , nameof (command));
-        //    }
-        //    _adminCommand.Add(command);
-        //}
-        //public void RemoveAdminCommand(string command)
-        //{
-        //    if(string.IsNullOrWhiteSpace(command))
-        //    {
-
-        //    }
-        //}
-
+        private static List<string> _adminCommand = new List<string>();
+        static AdminPanel()
+        {
+            _adminCommand.Add(" --admin --newCommand --Panel");
+            _adminCommand.Add(" --admin --newService");
+            _adminCommand.Add(" --admin --removeService");
+            _adminCommand.Add(" --admin --newCategory");
+            _adminCommand.Add(" --admin --removeCategory");
+            _adminCommand.Add(" --admin --newCommand --Download");
+            _adminCommand.Add(" --admin --removeCommand --Download");
+        }
+        public static void RunAdminPanelCommand()
+        {
+            foreach (string command in _adminCommand) Console.WriteLine(command);
+        }
 
         public static void Panel()
         {
@@ -41,8 +24,10 @@ namespace TsunamiApp
             {
                 Console.Clear();
                 //banner
-                
 
+                RunAdminPanelCommand();
+
+                Console.WriteLine("\n“ы уже в панели");
                     Console.Write("=>:\t");
                     var adminInput = Console.ReadLine();
 

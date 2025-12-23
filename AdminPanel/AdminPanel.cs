@@ -5,7 +5,6 @@ namespace TsunamiApp
         private static List<string> _adminCommand = new List<string>();
         static AdminPanel()
         {
-            _adminCommand.Add(" --admin --newCommand --Panel");
             _adminCommand.Add(" --admin --newService");
             _adminCommand.Add(" --admin --removeService");
             _adminCommand.Add(" --admin --newCategory");

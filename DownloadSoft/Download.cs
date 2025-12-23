@@ -3,6 +3,7 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Net.Http;
 using System.Net;
+using System.Runtime.InteropServices;
 
 namespace TsunamiApp
 {
@@ -18,11 +19,23 @@ namespace TsunamiApp
             }
 
             var savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name + ".exe");
+
+                if(File.Exists(savePath))
+                {
+                    Console.WriteLine($"Файл с именем {name} уже существует...");
+                    Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
+                }
+
+            Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
 
-                using var client = new HttpClient();
-                    byte[] data = await client.GetByteArrayAsync(downloadUrl);
-                        await File.WriteAllBytesAsync(savePath, data);
+            using var client = new HttpClient();
+            var response = await client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            await using var stream = await response.Content.ReadAsStreamAsync();
+            await using var fileStream = File.Create(savePath);
+
+                await fileStream.CopyToAsync(fileStream);
 
             Console.WriteLine($"Установлено в {savePath}");
         }
@@ -50,11 +63,23 @@ namespace TsunamiApp
             }
 
             var savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name + ".zip");
+
+                if(File.Exists(savePath))
+                {
+                    Console.WriteLine("Файл с именем {name} уже существует...");
+                    Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
+                }
+
+            Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
 
             using var client = new HttpClient();
-            byte[] data = await client.GetByteArrayAsync(downloadUrl);
-            await File.WriteAllBytesAsync(savePath, data);
+            using var response = await client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            await using var stream = await response.Content.ReadAsStreamAsync();
+                await using var fileStream = File.Create(savePath);
+
+                    await stream.CopyToAsync(fileStream);
 
             Console.WriteLine($"Установлено в {savePath}");
         }
@@ -82,13 +107,25 @@ namespace TsunamiApp
             }
 
             var savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name + ".torrent");
+
+            if(File.Exists(savePath))
+            {
+                Console.WriteLine($"Файл под именем {name} уже существует...");
+                Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
+            }
+            Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
 
             using var client = new HttpClient();
-            byte[] data = await client.GetByteArrayAsync(downloadUrl);
-            await File.WriteAllBytesAsync(savePath, data);
+            var response = await client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            await using var stream = await response.Content.ReadAsStreamAsync();
+            await using var fileStream = File.Create(savePath);
+
+                await fileStream.CopyToAsync(fileStream);
 
             Console.WriteLine($"Установлено в {savePath}");
+            Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
         }
         public async Task RunDownloadSoftTorrent(string softName , string urlSoft)
         {
@@ -114,13 +151,27 @@ namespace TsunamiApp
             }
 
             var savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name + ".iso");
-            Console.WriteLine($"Скачиваем {name}...");
+
+                if(File.Exists(savePath))
+                {
+                    Console.WriteLine($"Файл под именем {name} уже существует...");
+                    Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
+                }
+
+            Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
+            Console.WriteLine($"\nСкачиваем {name}...");
 
             using var client = new HttpClient();
-            byte[] data = await client.GetByteArrayAsync(downloadUrl);
-            await File.WriteAllBytesAsync(savePath, data);
 
-            Console.WriteLine($"Установлено в {savePath}");
+            using var response = await client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            await using var stream = await response.Content.ReadAsStreamAsync();
+            await using var fileStream = File.Create(savePath);
+
+                await stream.CopyToAsync(fileStream);
+
+            Console.WriteLine($"\nУстановлено в {savePath}");
+            Console.WriteLine("Нажмите любую клавишу => меню..."); Console.ReadKey(); await TsunamiMenu.Menu();
         }
         public async Task RunDownloadSoftIso(string softName, string urlSoft)
         {

@@ -6,14 +6,14 @@ namespace TsunamiApp
         static TsunamiMenu()
         {
             _listTsunamMenu.Add("--search --category --OperationSystem");
-            _listTsunamMenu.Add("--search --category --Design&Graphics");
-            _listTsunamMenu.Add("--search --category --Video&Audio");
-            _listTsunamMenu.Add("--search --category --Development");
-            _listTsunamMenu.Add("--search --category --Utilities");
-            _listTsunamMenu.Add("--search --category --Browsers");
-            _listTsunamMenu.Add("--search --category --Entertainments");
-            _listTsunamMenu.Add("--search --category --OfficeApplications");
-            _listTsunamMenu.Add("--search --category --Security");
+            //_listTsunamMenu.Add("--search --category --Design&Graphics");
+            //_listTsunamMenu.Add("--search --category --Video&Audio");
+            //_listTsunamMenu.Add("--search --category --Development");
+            //_listTsunamMenu.Add("--search --category --Utilities");
+            //_listTsunamMenu.Add("--search --category --Browsers");
+            //_listTsunamMenu.Add("--search --category --Entertainments");
+            //_listTsunamMenu.Add("--search --category --OfficeApplications");
+            //_listTsunamMenu.Add("--search --category --Security");
         }
         public static void RunListMenu()
         {
@@ -22,7 +22,7 @@ namespace TsunamiApp
 
 
         //run menu 
-        public static void Menu() //USER && ADMIN INTERFACE
+        public static async Task Menu() //USER && ADMIN INTERFACE
         {
             do
             {
@@ -31,7 +31,7 @@ namespace TsunamiApp
 
                     RunListMenu();//output list menu
 
-                Console.WriteLine("\n=>:\t");
+                Console.Write("\n=>:\t");
                 var userInput = Console.ReadLine();
 
                 if (int.TryParse(userInput, out var err))
@@ -45,7 +45,7 @@ namespace TsunamiApp
 
                 switch(userInput)
                 {
-                    case "--search --category --OperationSystem": TsunamiList.RunOperationSystem(); break;
+                    case "--search --category --OperationSystem": await TsunamiList.RunOperationSystem(); break;
                     case "--search --category --Design&Graphics": break;
                     case "--search --category --Video&Audio": break;
                     case "--search --category --Development": break;

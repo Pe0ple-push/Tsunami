@@ -4,7 +4,7 @@ namespace TsunamiApp
     {
         public static async Task Main()
         {
-            TsunamiMenu.Menu();            
+            await TsunamiMenu.Menu();            
         }
     }
 }

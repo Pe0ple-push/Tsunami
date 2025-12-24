@@ -26,6 +26,8 @@ namespace TsunamiApp
                     Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
                 }
 
+            Console.Clear();
+
             Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
 
@@ -37,7 +39,10 @@ namespace TsunamiApp
 
                 await fileStream.CopyToAsync(fileStream);
 
+            Console.Clear();
+
             Console.WriteLine($"Установлено в {savePath}");
+            Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
         }
         public static async Task RunDownloadSoft(string softName, string urlSoft) //USE ONLY LINK METHOD
         {
@@ -70,6 +75,8 @@ namespace TsunamiApp
                     Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
                 }
 
+            Console.Clear();
+
             Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
 
@@ -81,7 +88,10 @@ namespace TsunamiApp
 
                     await stream.CopyToAsync(fileStream);
 
+            Console.Clear();
+
             Console.WriteLine($"Установлено в {savePath}");
+            Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
         }
         public async Task RunDownloadSoftZip(string softName , string urlSoft)
         {
@@ -113,6 +123,9 @@ namespace TsunamiApp
                 Console.WriteLine($"Файл под именем {name} уже существует...");
                 Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
             }
+
+            Console.Clear();
+
             Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
 
@@ -123,6 +136,8 @@ namespace TsunamiApp
             await using var fileStream = File.Create(savePath);
 
                 await fileStream.CopyToAsync(fileStream);
+
+            Console.Clear();
 
             Console.WriteLine($"Установлено в {savePath}");
             Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
@@ -158,6 +173,8 @@ namespace TsunamiApp
                     Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
                 }
 
+            Console.Clear();
+
             Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"\nСкачиваем {name}...");
 
@@ -169,6 +186,8 @@ namespace TsunamiApp
             await using var fileStream = File.Create(savePath);
 
                 await stream.CopyToAsync(fileStream);
+
+            Console.Clear();
 
             Console.WriteLine($"\nУстановлено в {savePath}");
             Console.WriteLine("Нажмите любую клавишу => меню..."); Console.ReadKey(); await TsunamiMenu.Menu();

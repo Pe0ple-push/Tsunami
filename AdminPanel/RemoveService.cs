@@ -6,8 +6,8 @@ namespace TsunamiApp
         {
             try
             {
-                TsunamiList removeService = new TsunamiList();
-                TsunamiMenu removeEnter = new TsunamiMenu();
+                //TsunamiList removeService = new TsunamiList();
+                //TsunamiMenu removeEnter = new TsunamiMenu();
 
                 Console.Write("\n¬ведите категорию дл€ удалени€ сервиса:\t");
                 var adminInput = Console.ReadLine();

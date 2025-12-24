@@ -32,16 +32,16 @@ namespace TsunamiApp
 
                 switch(adminInput) //юдлхм охьер йнлюмдс => оепемня
                 {
-                    case "--admin --newService": AddService.Add(); break;
-                    case "--admin --removeService": RemoveService.Remove(); break;
-                    case "--admin --newCategory": AddCategory.Add(); break;
-                    case "--admin --removeCategory": RemoveCategory.Remove(); break;
+                    //case "--admin --newService": AddService.Add(); break;
+                    //case "--admin --removeService": RemoveService.Remove(); break;
+                    //case "--admin --newCategory": AddCategory.Add(); break;
+                    //case "--admin --removeCategory": RemoveCategory.Remove(); break;
 
                         default:
                         //admin non error
                         continue;
                 }//switch end
-                break;
+                //break;
             }
         }//Panel end
     }

@@ -5,21 +5,21 @@ namespace TsunamiApp
         private static List<string> _listTsunamMenu = new List<string>();
         static TsunamiMenu()
         {
-            _listTsunamMenu.Add("--search --category --OperationSystem");
-            //_listTsunamMenu.Add("--search --category --Design&Graphics");
-            //_listTsunamMenu.Add("--search --category --Video&Audio");
-            //_listTsunamMenu.Add("--search --category --Development");
-            //_listTsunamMenu.Add("--search --category --Utilities");
-            //_listTsunamMenu.Add("--search --category --Browsers");
-            //_listTsunamMenu.Add("--search --category --Entertainments");
-            //_listTsunamMenu.Add("--search --category --OfficeApplications");
-            //_listTsunamMenu.Add("--search --category --Security");
+            _listTsunamMenu.Add("--search --os --AllLinux");
+            _listTsunamMenu.Add("--search --os --Security");
+            _listTsunamMenu.Add("--search --os --Windows");
+            _listTsunamMenu.Add("--search --os --Enterprise");
+            _listTsunamMenu.Add("--search --os --OldHardware");
+            _listTsunamMenu.Add("--search --os --Educational");
+            _listTsunamMenu.Add("--search --os --Game");
+            _listTsunamMenu.Add("--search --os --Cloud");
+            _listTsunamMenu.Add("--search --os --Special");
+            _listTsunamMenu.Add("--search --os --Unusual");
         }
         public static void RunListMenu()
         {
             foreach(string item  in _listTsunamMenu) Console.WriteLine(item);
         }
-
 
         //run menu 
         public static async Task Menu() //USER && ADMIN INTERFACE
@@ -27,7 +27,7 @@ namespace TsunamiApp
             do
             {
                 Console.Clear();
-                //banner
+                Banner.BannerLogo();
 
                     RunListMenu();//output list menu
 
@@ -45,15 +45,8 @@ namespace TsunamiApp
 
                 switch(userInput)
                 {
-                    case "--search --category --OperationSystem": await TsunamiList.RunOperationSystem(); break;
-                    case "--search --category --Design&Graphics": break;
-                    case "--search --category --Video&Audio": break;
-                    case "--search --category --Development": break;
-                    case "--search --category --Utilities": break;
-                    case "--search --category --Browsers": break;
-                    case "--search --category --Entertainments": break;
-                    case "--search --category --OfficeApplications": break;
-                    case "--search --category --Security": break;
+                    case "--search --os --AllLinux": await AllLinux.RunAllLinux(); break;
+                    case "--search --os --Security": await SecurityOs.RunSecurityOs(); break;
 
                     case "--admin --n82c8283tb7 --openRoom": SecretRoom.AdminSecretCommand(); break; 
                     //enter admin room => admin authorization

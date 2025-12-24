@@ -12,7 +12,7 @@ namespace TsunamiApp
                 Console.Clear();
                 Console.WriteLine("Привет , ты попал на админку , это временное сообщение");
                 //BANNER
-                Console.WriteLine("\n=>:\t");
+                Console.Write("\n=>:\t");
 
                 var adminInput = Console.ReadLine();
                 switch (adminInput)

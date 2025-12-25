@@ -317,4 +317,9 @@ namespace TsunamiApp
             await matriux.RunDownloadSoftIso("Matriux", "https://sourceforge.net/projects/matriux/files/Matriux-blue/Matriux-Blue-Lite-x64.iso/download");
         }
     }
+
+    public class CyborgLinux
+    {
+        
+    }
 }

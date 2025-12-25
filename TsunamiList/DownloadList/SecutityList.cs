@@ -291,7 +291,7 @@ namespace TsunamiApp
                 {
                     case "--download --Pentoo --Full": await PentooFull(); break;
                     case "--download --Pentoo": await PentooDefault(); break;
-                    case "--back": break;
+                    case "--back": await SecurityOs.RunSecurityOs(); break;
                     default: continue; 
                 }
                 break;

@@ -27,6 +27,7 @@ namespace TsunamiApp
                 }
 
             Console.Clear();
+            Banner.BannerLogo();
 
             Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
@@ -40,6 +41,7 @@ namespace TsunamiApp
                 await fileStream.CopyToAsync(fileStream);
 
             Console.Clear();
+            Banner.BannerLogo();
 
             Console.WriteLine($"Установлено в {savePath}");
             Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
@@ -76,6 +78,7 @@ namespace TsunamiApp
                 }
 
             Console.Clear();
+            Banner.BannerLogo();
 
             Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
@@ -89,6 +92,7 @@ namespace TsunamiApp
                     await stream.CopyToAsync(fileStream);
 
             Console.Clear();
+            Banner.BannerLogo();
 
             Console.WriteLine($"Установлено в {savePath}");
             Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
@@ -125,6 +129,7 @@ namespace TsunamiApp
             }
 
             Console.Clear();
+            Banner.BannerLogo();
 
             Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"Скачиваем {name}...");
@@ -138,6 +143,7 @@ namespace TsunamiApp
                 await fileStream.CopyToAsync(fileStream);
 
             Console.Clear();
+            Banner.BannerLogo();
 
             Console.WriteLine($"Установлено в {savePath}");
             Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
@@ -174,6 +180,7 @@ namespace TsunamiApp
                 }
 
             Console.Clear();
+            Banner.BannerLogo();
 
             Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
             Console.WriteLine($"\nСкачиваем {name}...");
@@ -188,6 +195,7 @@ namespace TsunamiApp
                 await stream.CopyToAsync(fileStream);
 
             Console.Clear();
+            Banner.BannerLogo();
 
             Console.WriteLine($"\nУстановлено в {savePath}");
             Console.WriteLine("Нажмите любую клавишу => меню..."); Console.ReadKey(); await TsunamiMenu.Menu();

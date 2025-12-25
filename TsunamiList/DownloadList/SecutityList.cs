@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
 using System.Threading.Tasks;
 
@@ -14,7 +15,6 @@ namespace TsunamiApp
             _securityOs.Add("--download --os --ParrotOS");
             _securityOs.Add("--download --os --BackBox");
             _securityOs.Add("--download --os --Pentoo");
-            _securityOs.Add("--download --os --Bugtraq");
             _securityOs.Add("--download --os --Matriux");
             _securityOs.Add("--download --os --CyborgLinux");
             _securityOs.Add("--download --os --Weakerthan");
@@ -49,11 +49,10 @@ namespace TsunamiApp
                 {
                     case "--download --os --KaliLinux":  await KaliLinux.RunKaliLinux();  break;
                     case "--download --os --BlackArchLinux": await BlackArchLinux.RunBlackArchLinux(); break;
-                    case "--download --os --ParrotOS": ; break;
-                    case "--download --os --BackBox": ; break;
-                    case "--download --os --Pentoo": ; break;
-                    case "--download --os --Bugtraq": ; break;
-                    case "--download --os --Matriux": ; break;
+                    case "--download --os --ParrotOS": await ParrotOS.RunParrotOs(); break;
+                    case "--download --os --BackBox": await BackBox.RunBackBox(); break;
+                    case "--download --os --Pentoo": await Pentoo.RunPentoo(); break;
+                    case "--download --os --Matriux": await Matriux.MetriuxIso(); break;
                     case "--download --os --CyborgLinux": ; break;
                     case "--download --os --Weakerthan": ; break;
                     case "--download --os --NodeZero": ; break;
@@ -78,10 +77,6 @@ namespace TsunamiApp
 
         }
     }
-
-
-
-    //os
 
     public class KaliLinux
     {
@@ -188,4 +183,138 @@ namespace TsunamiApp
 
     }
 
+    public class ParrotOS
+    {
+        private static List<string> _parrotOs = new List<string>();
+        static ParrotOS()
+        {
+            _parrotOs.Add("--download --ParrotOS --Iso");
+            _parrotOs.Add("--download --ParrotOS --Torrent");
+            _parrotOs.Add("--back");
+        }
+        public static async Task RunParrotOs()
+        {
+            while(true)
+            {
+                Console.Clear();
+                    Banner.BannerLogo();
+
+                foreach (var item in _parrotOs) Console.WriteLine(item);
+                Console.Write("\n=>:\t");
+                    var userInput = Console.ReadLine();
+
+                switch (userInput)
+                {
+                    case "--download --ParrotOS --Iso": await RunParrotOSIso(); break;
+                    case "--download --ParrotOS --Torrent": await RunParrotOsTorrent(); break;
+                    case "--back": await SecurityOs.RunSecurityOs(); break;
+                    default: continue;
+                }
+                break;
+            }
+        }
+        public static async Task RunParrotOSIso()
+        {
+            DownloadIso parrotOs = new DownloadIso();
+            await parrotOs.RunDownloadSoftIso("ParrotOS","https://dn721607.ca.archive.org/0/items/parrot-security-4.2.2-i-386.iso_202306/Parrot-security-4.2.2_i386.iso");
+        }
+        public static async Task RunParrotOsTorrent()
+        {
+            DownloadTorrent parrotOs = new DownloadTorrent();
+            await parrotOs.RunDownloadSoftTorrent("ParrotOS","https://dn721607.ca.archive.org/0/items/parrot-security-4.2.2-i-386.iso_202306/parrot-security-4.2.2-i-386.iso_202306_archive.torrent");
+        }
+    }
+
+    public class BackBox
+    { 
+        private static List<string> _backBox = new List<string>();
+        static BackBox()
+        {
+            _backBox.Add("--download --BackBox --Iso");
+            _backBox.Add("--download --BackBox --Torrent");
+            _backBox.Add("--back");
+        }
+        public static async Task RunBackBox()
+        {
+            while(true)
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                foreach (var item in _backBox) Console.WriteLine(item);
+                Console.Write("\n=>:\t");
+                var userInput = Console.ReadLine();
+
+                switch (userInput)
+                {
+                    case "--download --BackBox --Iso": await BackBoxIso(); break;
+                    case "--download --BackBox --Torrent": await BackBoxTorrent(); break;
+                    case "--back": await SecurityOs.RunSecurityOs(); break;
+                    default: continue;
+                }
+                break;
+            }
+        }
+        public static async Task BackBoxIso()
+        {
+            DownloadIso backBox = new DownloadIso();
+            await backBox.RunDownloadSoftIso("BackBox", "https://backbox.mirror.garr.it/backbox-9-desktop-amd64.iso");
+        }
+        public static async Task BackBoxTorrent()
+        {
+            DownloadTorrent backBox = new DownloadTorrent();
+            await backBox.RunDownloadSoftTorrent("BackBox", "https://mirror.backbox.org/backbox-9-desktop-amd64.iso.torrent");
+        }
+    }
+
+   public class Pentoo
+    {
+        private static List<string> _pentoo = new List<string>();
+        static Pentoo()
+        {
+            _pentoo.Add("--download --Pentoo --Full");
+            _pentoo.Add("--download --Pentoo");
+            _pentoo.Add("--back");
+        }
+        public static async Task RunPentoo()
+        {
+            while(true)
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                foreach (var item in _pentoo) Console.WriteLine(item);
+                Console.Write("\n=>:\t");
+                var userInput = Console.ReadLine();
+
+                switch (userInput)
+                {
+                    case "--download --Pentoo --Full": await PentooFull(); break;
+                    case "--download --Pentoo": await PentooDefault(); break;
+                    case "--back": break;
+                    default: continue; 
+                }
+                break;
+            }
+        }
+        public static async Task PentooFull()
+        {
+            DownloadIso pentooFull = new DownloadIso();
+            await pentooFull.RunDownloadSoftIso("Pentoo", "https://pentoo.ch/isos/Release/Pentoo_Full_amd64_hardened/pentoo-full-amd64-hardened-2025.0_p20251102.iso");
+        }
+        public static async Task PentooDefault()
+        {
+            DownloadIso pentooDefault = new DownloadIso();
+            await pentooDefault.RunDownloadSoftIso("Pentoo", "https://www.pentoo.ch/isos/Release/Pentoo_x86_hardened/pentoo-x86-hardened-2024.0_p20240111.iso");
+        }
+    }
+
+    public class Matriux
+    {
+        public static async Task MetriuxIso()
+        {
+            DownloadIso matriux = new DownloadIso();
+            await matriux.RunDownloadSoftIso("Matriux", "https://sourceforge.net/projects/matriux/files/Matriux-blue/Matriux-Blue-Lite-x64.iso/download");
+        }
+    }
 }

@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using System.Reflection.Metadata.Ecma335;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace TsunamiApp
@@ -23,12 +24,10 @@ namespace TsunamiApp
             _securityOs.Add("--download --os --SamuraiWTF");
             _securityOs.Add("--download --os --NetworkSecurityToolkit");
             _securityOs.Add("--download --os --ArchStrike");
-            _securityOs.Add("--download --os --FedoraSecurityLab");
+            _securityOs.Add("--download --os --FedoraSecurity");
             _securityOs.Add("--download --os --Tails");
-            _securityOs.Add("--download --os --Whonix");
             _securityOs.Add("--download --os --QubesOS");
             _securityOs.Add("--download --os --SubgraphOS");
-            _securityOs.Add("--download --os --DiscreeteLinux");
             _securityOs.Add("--back");
         }
         public static async Task RunSecurityOs()
@@ -53,18 +52,16 @@ namespace TsunamiApp
                     case "--download --os --Pentoo": await Pentoo.RunPentoo(); break;
                     case "--download --os --Matriux": await Matriux.UserMatriuxChoice(); break;
                     case "--download --os --CyborgLinux": await CyborgLinux.RunCyborgLinux(); break;
-                    case "--download --os --NodeZero": NodeZero.NodeZeroIso(); break;
-                    case "--download --os --CAINE": ; break;
-                    case "--download --os --DEFT": ; break;
-                    case "--download --os --SamuraiWTF": ; break;
-                    case "--download --os --NetworkSecurityToolkit": ; break;
-                    case "--download --os --ArchStrike": ; break;
-                    case "--download --os --FedoraSecurityLab": ; break;
-                    case "--download --os --Tails": ; break;
-                    case "--download --os --Whonix": ; break;
-                    case "--download --os --QubesOS": ; break;
-                    case "--download --os --SubgraphOS": ; break;
-                    case "--download --os --DiscreeteLinux": ; break;
+                    case "--download --os --NodeZero": await NodeZero.NodeZeroIso(); break;
+                    case "--download --os --CAINE": await CAINE.RunCAINE(); break;
+                    case "--download --os --DEFT": await DEFT.RunDEFT(); break;
+                    case "--download --os --SamuraiWTF": await SamuraiWTF.RunSamuraiWTF(); break;
+                    case "--download --os --NetworkSecurityToolkit": await NetworkSecurityToolkit.RunNetworkSecurityToolkit(); break;
+                    case "--download --os --ArchStrike": await ArchStrike.RunArchStrike(); break;
+                    case "--download --os --FedoraSecurity": await FedoraSecurityLab.RunFedoraSecurity(); break;
+                    case "--download --os --Tails": await Tails.RunTails(); break;
+                    case "--download --os --QubesOS": await QubesOS.RunQubesOS(); break;
+                    case "--download --os --SubgraphOS": await SubgraphOS.RunSubgraphOS(); break;
 
                     case "--back": await TsunamiMenu.Menu(); break;
 
@@ -386,5 +383,140 @@ namespace TsunamiApp
             await nodeZero.RunDownloadSoftIso("NodeZero", "https://excellmedia.dl.sourceforge.net/project/nodezero/NodeZero/NodeZero.iso?viasf=1");
         }
     }
-    //public class
+    public class CAINE
+    {
+        private static List<string> _caine = new List<string>();
+        static CAINE()
+        {
+            _caine.Add("--download --CAINE --Iso");
+            _caine.Add("--download --CAINE --Torrent");
+            _caine.Add("--back");
+        }
+        public static async Task RunCAINE()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                foreach (var item in _caine) Console.WriteLine(item);
+                Console.Write("\n=>:\t");
+
+                var userInput = Console.ReadLine();
+                switch (userInput)
+                {
+                    case "--download --CAINE --Iso": await CAINEIso(); break;
+                    case "--download --CAINE --Torrent": await CAINETorrent();  break;
+                    case "--back": await SecurityOs.RunSecurityOs();  break;
+                    default: continue;
+                }
+            }
+        }
+        public static async Task CAINEIso()
+        {
+            DownloadIso caineIso = new DownloadIso();
+            await caineIso.RunDownloadSoftIso("CAINE", "https://archive.org/download/caine7.0/caine7.0.iso");
+        }
+        public static async Task CAINETorrent()
+        {
+            DownloadTorrent caineTorrent = new DownloadTorrent();
+            await caineTorrent.RunDownloadSoftTorrent("CAINE", "https://archive.org/download/caine7.0/caine7.0_archive.torrent");
+        }
+    }
+    public class DEFT
+    {
+        private static List<string> _deft = new List<string>();
+        static DEFT()
+        {
+            _deft.Add("--download --DEFT --Iso");
+            _deft.Add("--download --DEFT --Torrent");
+            _deft.Add("--back");
+        }
+        public static async Task RunDEFT()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                foreach (var item in _deft) Console.WriteLine(item);
+                Console.Write("\n=>:\t");
+
+                var userInput = Console.ReadLine();
+                switch (userInput)
+                {
+                    case "--download --DEFT --Iso": await DEFTIso(); break;
+                    case "--download --DEFT --Torrent": await DEFTTorrent(); break;
+                    case "--back": await SecurityOs.RunSecurityOs(); break;
+                    default: continue;
+                }
+            }
+        }
+        public static async Task DEFTIso()
+        {
+            DownloadIso deftIso = new DownloadIso();
+            await deftIso.RunDownloadSoftIso("DEFT", "https://archive.org/download/caine7.0/caine7.0.iso");
+        }
+        public static async Task DEFTTorrent()
+        {
+            DownloadTorrent deftTorrent = new DownloadTorrent();
+            await deftTorrent.RunDownloadSoftTorrent("DEFT", "https://archive.org/download/caine7.0/caine7.0_archive.torrent");
+        }
+    }
+    public class SamuraiWTF
+    {
+        public static async Task RunSamuraiWTF()
+        {
+            DownloadZip samurai = new DownloadZip();
+            await samurai.RunDownloadSoftZip("SamuraiWTF", "https://altushost-swe.dl.sourceforge.net/project/samurai/SamuraiWTF%203.0%20Branch/SamuraiWTF3.3.2.zip?viasf=1");
+        }
+    }
+    public class NetworkSecurityToolkit
+    {
+        public static async Task RunNetworkSecurityToolkit()
+        {
+            DownloadIso networkSecurityToolkit = new DownloadIso();
+            await networkSecurityToolkit.RunDownloadSoftIso("NetworkSecurityToolkit", "https://altushost-swe.dl.sourceforge.net/project/nst/NST/NST%2042-14476/nst-42-14476.x86_64.iso?viasf=1");
+        }
+    }
+    public class ArchStrike
+    {
+        public static async Task RunArchStrike()
+        {
+            DownloadIso archStrike = new DownloadIso();
+            await archStrike.RunDownloadSoftIso("ArchStrike", "https://mirror.archstrike.org/os/new_iso/archstrike-2021.12.31-x86_64.iso");
+        }
+    }
+    public class FedoraSecurityLab
+    {
+        public static async Task RunFedoraSecurity()
+        {
+            DownloadIso fedora = new DownloadIso();
+            await fedora.RunDownloadSoftIso("FedoraSecurity", "https://mirror.yandex.ru/fedora/linux/releases/43/KDE/x86_64/iso/Fedora-KDE-Desktop-Live-43-1.6.x86_64.iso");
+        }
+    }
+    public class Tails
+    {
+        public static async Task RunTails()
+        {
+            DownloadIso tails = new DownloadIso();
+            await tails.RunDownloadSoftIso("Tails" , "https://download.tails.net/tails/stable/tails-amd64-7.3.1/tails-amd64-7.3.1.img");
+        }
+    }
+    public class QubesOS
+    { 
+        public static async Task RunQubesOS()
+        {
+            DownloadIso QubesOS = new DownloadIso();
+            await QubesOS.RunDownloadSoftIso("QubesOS", "https://mirrors.edge.kernel.org/qubes/iso/Qubes-R4.3.0-x86_64.iso");
+        }
+    }
+    public class SubgraphOS
+    {
+        public static async Task RunSubgraphOS()
+        {
+            DownloadIso subgraphOS = new DownloadIso();
+            await subgraphOS.RunDownloadSoftIso("SubgraphOS", "https://master.dl.sourceforge.net/project/archiveos/s/subgraph/subgraph-os-alpha_2016-12-30_1.iso?viasf=1");
+        }
+    }
 }

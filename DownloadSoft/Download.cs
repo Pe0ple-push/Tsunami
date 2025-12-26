@@ -224,4 +224,58 @@ namespace TsunamiApp
             }
         }
     }
+    public class DownloadImg
+    {
+        private static async Task DowloadSoftImg(string name, string downloadUrl)
+        {
+            if (string.IsNullOrWhiteSpace(name)) throw new ArgumentException("Error: имя софта не может пустовать!");
+            if (string.IsNullOrWhiteSpace(downloadUrl)) throw new ArgumentException("Error: ссылка скачивания пуста!", nameof(downloadUrl));
+            if (!downloadUrl.Contains("https://") && !downloadUrl.Contains("http://"))
+            {
+                throw new ArgumentException("Error: неверный формат ссылки!", nameof(downloadUrl));
+            }
+
+            var savePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), name + ".img");
+
+            if (File.Exists(savePath))
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                Console.WriteLine($"Файл с именем {name} уже существует...");
+                Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
+            }
+
+            Console.Clear();
+            Banner.BannerLogo();
+
+            Console.WriteLine($"[!] До завершения загрузки => не трогайте файл {name} на рабочем столе");
+            Console.WriteLine($"Скачиваем {name}...");
+
+            using var client = new HttpClient();
+            var response = await client.GetAsync(downloadUrl, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+            await using var stream = await response.Content.ReadAsStreamAsync();
+            await using var fileStream = File.Create(savePath);
+
+            await fileStream.CopyToAsync(fileStream);
+
+            Console.Clear();
+            Banner.BannerLogo();
+
+            Console.WriteLine($"Установлено в {savePath}");
+            Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
+        }
+        public async Task RunDownloadImg(string softName, string urlSoft) //USE ONLY LINK METHOD
+        {
+            try
+            {
+                await DowloadSoftImg(softName, urlSoft);
+            }
+            catch (ArgumentException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+    }
 }

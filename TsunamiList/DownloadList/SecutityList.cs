@@ -17,7 +17,6 @@ namespace TsunamiApp
             _securityOs.Add("--download --os --Pentoo");
             _securityOs.Add("--download --os --Matriux");
             _securityOs.Add("--download --os --CyborgLinux");
-            _securityOs.Add("--download --os --Weakerthan");
             _securityOs.Add("--download --os --NodeZero");
             _securityOs.Add("--download --os --CAINE");
             _securityOs.Add("--download --os --DEFT");
@@ -52,10 +51,9 @@ namespace TsunamiApp
                     case "--download --os --ParrotOS": await ParrotOS.RunParrotOs(); break;
                     case "--download --os --BackBox": await BackBox.RunBackBox(); break;
                     case "--download --os --Pentoo": await Pentoo.RunPentoo(); break;
-                    case "--download --os --Matriux": await Matriux.MetriuxIso(); break;
-                    case "--download --os --CyborgLinux": ; break;
-                    case "--download --os --Weakerthan": ; break;
-                    case "--download --os --NodeZero": ; break;
+                    case "--download --os --Matriux": await Matriux.UserMatriuxChoice(); break;
+                    case "--download --os --CyborgLinux": await CyborgLinux.RunCyborgLinux(); break;
+                    case "--download --os --NodeZero": NodeZero.NodeZeroIso(); break;
                     case "--download --os --CAINE": ; break;
                     case "--download --os --DEFT": ; break;
                     case "--download --os --SamuraiWTF": ; break;
@@ -74,7 +72,6 @@ namespace TsunamiApp
                 }
                 break;
             }
-
         }
     }
 
@@ -180,7 +177,6 @@ namespace TsunamiApp
             DownloadIso blackarch = new DownloadIso();
             await blackarch.RunDownloadSoftIso("BlackArch", "https://ftp.halifax.rwth-aachen.de/blackarch/iso/blackarch-linux-full-2023.04.01-x86_64.iso");
         }
-
     }
 
     public class ParrotOS
@@ -311,15 +307,84 @@ namespace TsunamiApp
 
     public class Matriux
     {
+        public static async Task UserMatriuxChoice()
+        {
+            while(true)
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                Console.WriteLine($"[!] ПРЕДУПРЕЖДЕНИЕ: Дистрибутив Matriux является устаревшим...");
+                Console.Write("\nВы действительно хотите продолжить ? (y/n):\t");
+
+                var userInput = Console.ReadLine();
+
+                switch(userInput)
+                {
+                    case "y": await MetriuxIso(); break;
+                    case "n": await SecurityOs.RunSecurityOs(); break;
+                    default: continue;
+                }
+                break;
+            }
+        }
         public static async Task MetriuxIso()
         {
             DownloadIso matriux = new DownloadIso();
-            await matriux.RunDownloadSoftIso("Matriux", "https://sourceforge.net/projects/matriux/files/Matriux-blue/Matriux-Blue-Lite-x64.iso/download");
+            await matriux.RunDownloadSoftIso("Matriux", "https://altushost-swe.dl.sourceforge.net/project/matriux/Matriux-blue/Matriux-Blue-Lite-x64.iso?viasf=1");
         }
     }
 
     public class CyborgLinux
     {
-        
+       private static List<string> _cyborgLinux = new List<string>();
+
+        static CyborgLinux()
+        {
+            _cyborgLinux.Add("--download --CyborgLinux --Iso");
+            _cyborgLinux.Add("--download --CyborgLinux --Torrent");
+            _cyborgLinux.Add("--back");
+        }
+
+        public static async Task RunCyborgLinux()
+        {
+            while(true)
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                foreach (var item in _cyborgLinux) Console.WriteLine(item);
+                Console.Write("\n=>:\t");
+
+                var userInput = Console.ReadLine();
+                switch (userInput)
+                {
+                    case "--download --CyborgLinux --Iso": await CyborgLinuxIso(); break;
+                    case "--download --CyborgLinux --Torrent": await CyborgLinuxTorrent(); break;
+                    case "--back": await SecurityOs.RunSecurityOs(); break;
+                    default: continue;
+                }
+                break;
+            }
+        }
+        public static async Task CyborgLinuxIso()
+        {
+            DownloadIso cyborgLinux = new DownloadIso();
+            await cyborgLinux.RunDownloadSoftIso("CyborgLinux", "https://dn721807.ca.archive.org/0/items/cyborg-hawk-linux-v-1.1/cyborg-hawk-linux-v-1.1.iso");
+        }
+        public static async Task CyborgLinuxTorrent()
+        {
+            DownloadTorrent cyborgLinux = new DownloadTorrent();
+            await cyborgLinux.RunDownloadSoftTorrent("Cyborg", "https://dn721807.ca.archive.org/0/items/cyborg-hawk-linux-v-1.1/cyborg-hawk-linux-v-1.1_archive.torrent");
+        }
     }
+    public class NodeZero
+    {
+        public static async Task NodeZeroIso()
+        {
+            DownloadIso nodeZero = new DownloadIso();
+            await nodeZero.RunDownloadSoftIso("NodeZero", "https://excellmedia.dl.sourceforge.net/project/nodezero/NodeZero/NodeZero.iso?viasf=1");
+        }
+    }
+    //public class
 }

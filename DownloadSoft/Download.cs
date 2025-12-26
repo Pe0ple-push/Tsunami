@@ -22,6 +22,9 @@ namespace TsunamiApp
 
                 if(File.Exists(savePath))
                 {
+                    Console.Clear();
+                    Banner.BannerLogo();
+
                     Console.WriteLine($"Файл с именем {name} уже существует...");
                     Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
                 }
@@ -73,6 +76,9 @@ namespace TsunamiApp
 
                 if(File.Exists(savePath))
                 {
+                    Console.Clear();
+                    Banner.BannerLogo();
+
                     Console.WriteLine("Файл с именем {name} уже существует...");
                     Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
                 }
@@ -124,6 +130,9 @@ namespace TsunamiApp
 
             if(File.Exists(savePath))
             {
+                Console.Clear();
+                Banner.BannerLogo();
+
                 Console.WriteLine($"Файл под именем {name} уже существует...");
                 Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
             }
@@ -175,6 +184,9 @@ namespace TsunamiApp
 
                 if(File.Exists(savePath))
                 {
+                    Console.Clear();
+                    Banner.BannerLogo();
+
                     Console.WriteLine($"Файл под именем {name} уже существует...");
                     Console.WriteLine("Нажмите любую клавишу => меню"); Console.ReadKey(); await TsunamiMenu.Menu();
                 }

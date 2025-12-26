@@ -7,7 +7,6 @@ namespace TsunamiApp
         {
             _listTsunamMenu.Add("--tsm --os --AllLinux");
             _listTsunamMenu.Add("--tsm --os --Security");
-            _listTsunamMenu.Add("--tsm --os --Windows");
             _listTsunamMenu.Add("--tsm --os --Enterprise");
             _listTsunamMenu.Add("--tsm --os --OldHardware");
             _listTsunamMenu.Add("--tsm --os --Educational");
@@ -16,7 +15,7 @@ namespace TsunamiApp
             _listTsunamMenu.Add("--tsm --os --Special");
             _listTsunamMenu.Add("--tsm --os --Unusual");
         }
-        public static void RunListMenu()
+        public static async Task RunListMenu()
         {
             foreach(string item  in _listTsunamMenu) Console.WriteLine(item);
         }

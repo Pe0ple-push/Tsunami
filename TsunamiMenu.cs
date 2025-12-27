@@ -5,15 +5,9 @@ namespace TsunamiApp
         private static List<string> _listTsunamMenu = new List<string>();
         static TsunamiMenu()
         {
-            _listTsunamMenu.Add("--tsm --os --AllLinux");
-            _listTsunamMenu.Add("--tsm --os --Security");
-            _listTsunamMenu.Add("--tsm --os --Enterprise");
-            _listTsunamMenu.Add("--tsm --os --OldHardware");
-            _listTsunamMenu.Add("--tsm --os --Educational");
-            _listTsunamMenu.Add("--tsm --os --Game");
-            _listTsunamMenu.Add("--tsm --os --Cloud");
-            _listTsunamMenu.Add("--tsm --os --Special");
-            _listTsunamMenu.Add("--tsm --os --Unusual");
+            _listTsunamMenu.Add("--tsm --os --open --AllLinux");
+            _listTsunamMenu.Add("--tsm --os --open --Security");
+            _listTsunamMenu.Add("--tsm --exit");
         }
         public static async Task RunListMenu()
         {
@@ -28,30 +22,31 @@ namespace TsunamiApp
                 Console.Clear();
                 Banner.BannerLogo();
 
-                    RunListMenu();//output list menu
+                    await RunListMenu();//output list menu
 
                 Console.Write("\n=>:\t");
                 var userInput = Console.ReadLine();
 
                 if (int.TryParse(userInput, out var err))
                 {
-                    Console.WriteLine("Error: введите команду для выбора категории..."); continue;
+                    Console.WriteLine("Error: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ..."); continue;
                 }
                 if (string.IsNullOrWhiteSpace(userInput))
                 {
-                    Console.WriteLine("Error: команда не может быть пуста..."); continue;
+                    Console.WriteLine("Error: пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ..."); continue;
                 }
 
                 switch(userInput)
                 {
-                    case "--tsm --os --AllLinux": await AllLinux.RunAllLinux(); break;
-                    case "--tsm --os --Security": await SecurityOs.RunSecurityOs(); break;
+                    case "--tsm --os --open --AllLinux": await AllLinux.RunAllLinux(); break;
+                    case "--tsm --os --open --Security": await SecurityOs.RunSecurityOs(); break;
+                    case"--tsm --exit": Environment.Exit(0); break;
 
                     case "--admin --n82c8283tb7 --openRoom": SecretRoom.AdminSecretCommand(); break; 
                     //enter admin room => admin authorization
 
                     default:
-                        Console.WriteLine("Error: такой категории не сущетсвует..."); continue;
+                        Console.WriteLine("Error: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ..."); continue;
                 }
                 break;
             }

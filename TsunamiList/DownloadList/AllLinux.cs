@@ -1,5 +1,5 @@
 
-using System.Diagnostics;
+using System.Collections;
 namespace TsunamiApp
 {
     public class AllLinux
@@ -17,18 +17,7 @@ namespace TsunamiApp
             _allLinux.Add("--download --os --Manjaro");
             _allLinux.Add("--download --os --Mint");
             _allLinux.Add("--download --os --ElementaryOS");
-            _allLinux.Add("--download --os --Pop_OS");
-            _allLinux.Add("--download --os --ZorinOS");
-            _allLinux.Add("--download --os --Solus");
-            _allLinux.Add("--download --os --PCLinuxOS");
-            _allLinux.Add("--download --os --Slackware");
-            _allLinux.Add("--download --os --Gentoo");
-            _allLinux.Add("--download --os --VoidLinux");
-            _allLinux.Add("--download --os --NixOS");
-            _allLinux.Add("--download --os --VoidLinux");
-            _allLinux.Add("--download --os --ClearLinux");
-            _allLinux.Add("--download --os --Alpine");
-            _allLinux.Add("--download --os --TinyCore");
+            _allLinux.Add("--download --os --PopOS");
             _allLinux.Add("--back");
             //soon new os AllLinux...
         }
@@ -52,6 +41,9 @@ namespace TsunamiApp
                     case "--download --os --CentOS": await CentOS.RunCentOS(); break;
                     case "--download --os --OpenSUSE": await OpenSUSE.RunOpenSUSE(); break;
                     case "--download --os --Manjaro": await Manjaro.RunManjaro(); break;
+                    case"--download --os --Mint": await Mint.RunMint(); break;
+                    case"--download --os --ElementaryOS": await ElementaryOS.RunElementaryOS(); break;
+                    case"--download --os --PopOS": await PopOS.RunPopOS(); break;
                     case "--back": await TsunamiMenu.Menu(); break;
                         default: continue;
                 }
@@ -242,6 +234,105 @@ namespace TsunamiApp
     public class Mint
     {
         private static List<string> _mint = new List<string>();
-        
+        static Mint()
+        {
+            _mint.Add("--download --Mint --Cinnamon");
+            _mint.Add("--download --Mint --Xfce");
+            _mint.Add("--download --Mint --MATE");
+            _mint.Add("--back");
+        }
+        public static async Task RunMint()
+        {
+            while(true)
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                    foreach(var i in _mint) Console.WriteLine(i);
+                    Console.Write("\n=>:\t");
+                    var userInput = Console.ReadLine();
+
+                switch(userInput)
+                {
+                    case"--download --Mint --Cinnamon": await MintCinnamon(); break;
+                    case"--download --Mint --Xfce": await MintXfce(); break;
+                    case"--download --Mint --MATE": await MintMATE(); break;
+                    case"--back": await AllLinux.RunAllLinux(); break;
+                    default: continue;
+                }
+                break;
+            }
+        }
+        public static async Task MintCinnamon()
+        {
+            DownloadIso mint = new DownloadIso();
+            await mint.RunDownloadSoftIso("Mint Cinnamon", "https://muug.ca/mirror/linuxmint/iso/stable/22.2/linuxmint-22.2-cinnamon-64bit.iso");
+        }
+        public static async Task MintXfce()
+        {
+            DownloadIso mint = new DownloadIso();
+            await mint.RunDownloadSoftIso("Mint Xfce" , "https://muug.ca/mirror/linuxmint/iso/stable/22.2/linuxmint-22.2-xfce-64bit.iso");
+        }
+        public static async Task MintMATE()
+        {
+            DownloadIso mint = new DownloadIso();
+            await mint.RunDownloadSoftIso("Mint MATE" , "https://muug.ca/mirror/linuxmint/iso/stable/22.2/linuxmint-22.2-mate-64bit.iso");
+        }
+    }
+    public class ElementaryOS
+    {
+        public static async Task RunElementaryOS()
+        {
+            DownloadIso elementaryOS = new DownloadIso();
+            await elementaryOS.RunDownloadSoftIso("ElementaryOS", "https://fra1.dl.elementary.io/download/MTc2Njg0NTY0Mg==/elementaryos-8.1-stable-amd64.20251211.iso");
+        }
+    }
+    public class PopOS
+    {
+        private static List<string> _pop = new List<string>();
+        static PopOS()
+        {
+            _pop.Add("--download --PopOS --24.04 LTS");
+            _pop.Add("--download --PopOS --24.04 LTS --NVIDIA");
+            _pop.Add("--download --PopOS --24.04 LTS --ARM");
+            _pop.Add("--back");
+        }
+        public static async Task RunPopOS()
+        {
+            while(true)
+            {
+                Console.Clear();
+                Banner.BannerLogo();
+
+                foreach(var i in _pop) Console.WriteLine(i);
+                Console.Write("\n=>:\t");
+                var userInput = Console.ReadLine();
+
+                switch(userInput)
+                {
+                    case"--download --PopOS --24.04 LTS": await PopLTS(); break;
+                    case"-download --PopOS --24.04 LTS --NVIDIA": await PopNvidia(); break;
+                    case"--download --PopOS --24.04 LTS --ARM": await PopARM(); break;
+                    case"--back": await AllLinux.RunAllLinux(); break;
+                    default: continue;
+                }
+                break;
+            }
+        }
+        public static async Task PopLTS()
+        {
+            DownloadIso pop = new DownloadIso();
+            await pop.RunDownloadSoftIso("PopOS LTS" , "https://iso.pop-os.org/24.04/amd64/generic/22/pop-os_24.04_amd64_generic_22.iso");
+        }
+        public static async Task PopNvidia()
+        {
+            DownloadIso pop = new DownloadIso();
+            await pop.RunDownloadSoftIso("PopOS Nvidia" , "https://iso.pop-os.org/24.04/amd64/nvidia/22/pop-os_24.04_amd64_nvidia_22.iso");
+        }
+        public static async Task PopARM()
+        {
+            DownloadIso pop = new DownloadIso();
+            await pop.RunDownloadSoftIso("PopOS ARM" , "https://iso.pop-os.org/24.04/arm64/generic/3/pop-os_24.04_arm64_generic_3.iso");
+        }
     }
 }

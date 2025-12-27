@@ -87,7 +87,7 @@ namespace TsunamiApp
             do
             {
                 Console.Clear();
-                //banner
+                Banner.BannerLogo();
 
                 foreach (var item in _kaliLinux) Console.WriteLine(item);
 
@@ -311,8 +311,8 @@ namespace TsunamiApp
                 Console.Clear();
                 Banner.BannerLogo();
 
-                Console.WriteLine($"[!] ПРЕДУПРЕЖДЕНИЕ: Дистрибутив Matriux является устаревшим...");
-                Console.Write("\nВы действительно хотите продолжить ? (y/n):\t");
+                Console.WriteLine($"[!] пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ Matriux пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ...");
+                Console.Write("\nпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ ? (y/n):\t");
 
                 var userInput = Console.ReadLine();
 

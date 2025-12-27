@@ -1,5 +1,5 @@
-using System.Diagnostics;
 
+using System.Diagnostics;
 namespace TsunamiApp
 {
     public class AllLinux
@@ -238,5 +238,10 @@ namespace TsunamiApp
             DownloadIso manjaro = new DownloadIso();
             await manjaro.RunDownloadSoftIso("Monjaro GNOME", "https://download.manjaro.org/gnome/25.0.10/manjaro-gnome-25.0.10-251013-linux612.iso");
         }
+    }
+    public class Mint
+    {
+        private static List<string> _mint = new List<string>();
+        
     }
 }

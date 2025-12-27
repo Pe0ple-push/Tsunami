@@ -335,4 +335,5 @@ namespace TsunamiApp
             await pop.RunDownloadSoftIso("PopOS ARM" , "https://iso.pop-os.org/24.04/arm64/generic/3/pop-os_24.04_arm64_generic_3.iso");
         }
     }
+    
 }
